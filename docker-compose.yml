@@ -22,14 +22,12 @@
 ##   $ cp env-example .env
 ##
 
-version: '2.3'
-
+version: "2.3"
 
 ################################################################################
 # SERVICES
 ################################################################################
 services:
-
   # ------------------------------------------------------------
   # Bind (DNS Server)
   # ------------------------------------------------------------
@@ -89,7 +87,6 @@ services:
     networks:
       app_net:
         ipv4_address: 172.16.238.100
-
 
   # ------------------------------------------------------------
   # PHP
@@ -216,7 +213,6 @@ services:
     depends_on:
       - bind
 
-
   # ------------------------------------------------------------
   # Web Server
   # ------------------------------------------------------------
@@ -225,7 +221,6 @@ services:
     hostname: httpd
 
     environment:
-
       ##
       ## Debug/Logging
       ##
@@ -315,7 +310,6 @@ services:
       - bind
       - php
 
-
   # ------------------------------------------------------------
   # MySQL Database
   # ------------------------------------------------------------
@@ -345,13 +339,12 @@ services:
       - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro${MOUNT_OPTIONS}
 
       # Mount MySQL Data directory
-      - devilbox-${MYSQL_SERVER}:/var/lib/mysql:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/backups/${MYSQL_SERVER}:/var/lib/mysql:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
       - php
       - httpd
-
 
   # ------------------------------------------------------------
   # PostgreSQL
@@ -361,7 +354,6 @@ services:
     hostname: pgsql
 
     environment:
-
       - POSTGRES_USER=${PGSQL_ROOT_USER}
       - POSTGRES_PASSWORD=${PGSQL_ROOT_PASSWORD}
       - POSTGRES_HOST_AUTH_METHOD=${PGSQL_HOST_AUTH_METHOD:-trust}
@@ -386,7 +378,6 @@ services:
       - bind
       - php
       - httpd
-
 
   # ------------------------------------------------------------
   # Redis
@@ -413,7 +404,6 @@ services:
       - php
       - httpd
 
-
   # ------------------------------------------------------------
   # Memcached
   # ------------------------------------------------------------
@@ -433,7 +423,6 @@ services:
       - bind
       - php
       - httpd
-
 
   # ------------------------------------------------------------
   # MongoDB
@@ -462,7 +451,6 @@ services:
       - php
       - httpd
 
-
 ################################################################################
 # NETWORK
 ################################################################################
@@ -477,7 +465,6 @@ networks:
         - subnet: 172.16.238.0/24
           gateway: 172.16.238.1
 
-
 ################################################################################
 # VOLUMES
 ################################################################################
@@ -490,95 +477,95 @@ volumes:
   # ------------------------------------------------------------
   # MySQL
   # ------------------------------------------------------------
-  devilbox-mysql-5.5:
-  devilbox-mysql-5.6:
-  devilbox-mysql-5.7:
+  #devilbox-mysql-5.5:
+  #devilbox-mysql-5.6:
+  #devilbox-mysql-5.7:
   devilbox-mysql-8.0:
-  devilbox-mariadb-5.5:
-  devilbox-mariadb-10.0:
-  devilbox-mariadb-10.1:
-  devilbox-mariadb-10.2:
-  devilbox-mariadb-10.3:
-  devilbox-mariadb-10.4:
-  devilbox-mariadb-10.5:
-  devilbox-percona-5.5:
-  devilbox-percona-5.6:
-  devilbox-percona-5.7:
-  devilbox-percona-8.0:
+  #devilbox-mariadb-5.5:
+  #devilbox-mariadb-10.0:
+  #devilbox-mariadb-10.1:
+  #devilbox-mariadb-10.2:
+  #devilbox-mariadb-10.3:
+  #devilbox-mariadb-10.4:
+  #devilbox-mariadb-10.5:
+  #devilbox-percona-5.5:
+  #devilbox-percona-5.6:
+  #devilbox-percona-5.7:
+  #devilbox-percona-8.0:
 
   # ------------------------------------------------------------
   # Postgres
   # ------------------------------------------------------------
-  devilbox-pgsql-9.0:
-  devilbox-pgsql-9.1:
-  devilbox-pgsql-9.2:
-  devilbox-pgsql-9.2-alpine:
-  devilbox-pgsql-9.3:
-  devilbox-pgsql-9.3-alpine:
-  devilbox-pgsql-9.4:
-  devilbox-pgsql-9.4-alpine:
-  devilbox-pgsql-9.5:
-  devilbox-pgsql-9.5-alpine:
-  devilbox-pgsql-9.6:
-  devilbox-pgsql-9.6-alpine:
-  devilbox-pgsql-10.0:
-  devilbox-pgsql-10.0-alpine:
-  devilbox-pgsql-10.1:
-  devilbox-pgsql-10.1-alpine:
-  devilbox-pgsql-10.2:
-  devilbox-pgsql-10.2-alpine:
-  devilbox-pgsql-10.3:
-  devilbox-pgsql-10.3-alpine:
-  devilbox-pgsql-10.4:
-  devilbox-pgsql-10.4-alpine:
-  devilbox-pgsql-10.5:
-  devilbox-pgsql-10.5-alpine:
-  devilbox-pgsql-10.6:
-  devilbox-pgsql-10.6-alpine:
-  devilbox-pgsql-11.0:
-  devilbox-pgsql-11.0-alpine:
-  devilbox-pgsql-11.1:
-  devilbox-pgsql-11.1-alpine:
-  devilbox-pgsql-11.2:
-  devilbox-pgsql-11.2-alpine:
-  devilbox-pgsql-11.3:
-  devilbox-pgsql-11.3-alpine:
-  devilbox-pgsql-11.4:
-  devilbox-pgsql-11.4-alpine:
-  devilbox-pgsql-11.5:
-  devilbox-pgsql-11.5-alpine:
-  devilbox-pgsql-11.6:
-  devilbox-pgsql-11.6-alpine:
-  devilbox-pgsql-11.7:
-  devilbox-pgsql-11.7-alpine:
-  devilbox-pgsql-11.8:
-  devilbox-pgsql-11.8-alpine:
-  devilbox-pgsql-11.9:
-  devilbox-pgsql-11.9-alpine:
-  devilbox-pgsql-12.0:
-  devilbox-pgsql-12.0-alpine:
-  devilbox-pgsql-12.1:
-  devilbox-pgsql-12.1-alpine:
-  devilbox-pgsql-12.2:
-  devilbox-pgsql-12.2-alpine:
-  devilbox-pgsql-12.3:
-  devilbox-pgsql-12.3-alpine:
-  devilbox-pgsql-12.4:
+  #devilbox-pgsql-9.0:
+  #devilbox-pgsql-9.1:
+  #devilbox-pgsql-9.2:
+  #devilbox-pgsql-9.2-alpine:
+  #devilbox-pgsql-9.3:
+  #devilbox-pgsql-9.3-alpine:
+  #devilbox-pgsql-9.4:
+  #devilbox-pgsql-9.4-alpine:
+  #devilbox-pgsql-9.5:
+  #devilbox-pgsql-9.5-alpine:
+  #devilbox-pgsql-9.6:
+  #devilbox-pgsql-9.6-alpine:
+  #devilbox-pgsql-10.0:
+  #devilbox-pgsql-10.0-alpine:
+  #devilbox-pgsql-10.1:
+  #devilbox-pgsql-10.1-alpine:
+  #devilbox-pgsql-10.2:
+  #devilbox-pgsql-10.2-alpine:
+  #devilbox-pgsql-10.3:
+  #devilbox-pgsql-10.3-alpine:
+  #devilbox-pgsql-10.4:
+  #devilbox-pgsql-10.4-alpine:
+  #devilbox-pgsql-10.5:
+  #devilbox-pgsql-10.5-alpine:
+  #devilbox-pgsql-10.6:
+  #devilbox-pgsql-10.6-alpine:
+  #devilbox-pgsql-11.0:
+  #devilbox-pgsql-11.0-alpine:
+  #devilbox-pgsql-11.1:
+  #devilbox-pgsql-11.1-alpine:
+  #devilbox-pgsql-11.2:
+  #devilbox-pgsql-11.2-alpine:
+  #devilbox-pgsql-11.3:
+  #devilbox-pgsql-11.3-alpine:
+  #devilbox-pgsql-11.4:
+  #devilbox-pgsql-11.4-alpine:
+  #devilbox-pgsql-11.5:
+  #devilbox-pgsql-11.5-alpine:
+  #devilbox-pgsql-11.6:
+  #devilbox-pgsql-11.6-alpine:
+  #devilbox-pgsql-11.7:
+  #devilbox-pgsql-11.7-alpine:
+  #devilbox-pgsql-11.8:
+  #devilbox-pgsql-11.8-alpine:
+  #devilbox-pgsql-11.9:
+  #devilbox-pgsql-11.9-alpine:
+  #devilbox-pgsql-12.0:
+  #devilbox-pgsql-12.0-alpine:
+  #devilbox-pgsql-12.1:
+  #devilbox-pgsql-12.1-alpine:
+  #devilbox-pgsql-12.2:
+  #devilbox-pgsql-12.2-alpine:
+  #devilbox-pgsql-12.3:
+  #devilbox-pgsql-12.3-alpine:
+  #devilbox-pgsql-12.4:
   devilbox-pgsql-12.4-alpine:
-  devilbox-pgsql-13.0:
-  devilbox-pgsql-13.0-alpine:
-  devilbox-pgsql-latest:
-  devilbox-pgsql-alpine:
+  #devilbox-pgsql-13.0:
+  #devilbox-pgsql-13.0-alpine:
+  #devilbox-pgsql-latest:
+  #devilbox-pgsql-alpine:
 
   # ------------------------------------------------------------
   # MongoDB
   # ------------------------------------------------------------
-  devilbox-mongo-2.8:
-  devilbox-mongo-3.0:
-  devilbox-mongo-3.2:
-  devilbox-mongo-3.4:
-  devilbox-mongo-3.6:
-  devilbox-mongo-4.0:
-  devilbox-mongo-4.2:
+  #devilbox-mongo-2.8:
+  #devilbox-mongo-3.0:
+  #devilbox-mongo-3.2:
+  #devilbox-mongo-3.4:
+  #devilbox-mongo-3.6:
+  #devilbox-mongo-4.0:
+  #devilbox-mongo-4.2:
   devilbox-mongo-4.4:
-  devilbox-mongo-latest:
+  #devilbox-mongo-latest:
