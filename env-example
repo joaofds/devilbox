@@ -235,7 +235,6 @@ DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=1
 DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=1
 
 
-
 ################################################################################
 ###
 ### 1. Choose Images (Version)
@@ -284,14 +283,14 @@ HTTPD_SERVER=nginx-stable
 #MYSQL_SERVER=mysql-5.5
 #MYSQL_SERVER=mysql-5.6
 #MYSQL_SERVER=mysql-5.7
-#MYSQL_SERVER=mysql-8.0
+MYSQL_SERVER=mysql-8.0
 #MYSQL_SERVER=mariadb-5.5
 #MYSQL_SERVER=mariadb-10.0
 #MYSQL_SERVER=mariadb-10.1
 #MYSQL_SERVER=mariadb-10.2
 #MYSQL_SERVER=mariadb-10.3
 #MYSQL_SERVER=mariadb-10.4
-MYSQL_SERVER=mariadb-10.5
+#MYSQL_SERVER=mariadb-10.5
 #MYSQL_SERVER=percona-5.5
 #MYSQL_SERVER=percona-5.6
 #MYSQL_SERVER=percona-5.7
@@ -368,8 +367,8 @@ MYSQL_SERVER=mariadb-10.5
 #PGSQL_SERVER=12.2-alpine
 #PGSQL_SERVER=12.3
 #PGSQL_SERVER=12.3-alpine
-PGSQL_SERVER=12.4
-#PGSQL_SERVER=12.4-alpine
+#PGSQL_SERVER=12.4
+PGSQL_SERVER=12.4-alpine
 #PGSQL_SERVER=13.0
 #PGSQL_SERVER=13.0-alpine
 #PGSQL_SERVER=latest
@@ -391,8 +390,8 @@ PGSQL_SERVER=12.4
 #REDIS_SERVER=4.0-alpine
 #REDIS_SERVER=5.0
 #REDIS_SERVER=5.0-alpine
-REDIS_SERVER=6.0
-#REDIS_SERVER=6.0-alpine
+#REDIS_SERVER=6.0
+REDIS_SERVER=6.0-alpine
 #REDIS_SERVER=latest
 #REDIS_SERVER=alpine
 
@@ -425,6 +424,17 @@ MEMCD_SERVER=1.6
 #MONGO_SERVER=4.2
 MONGO_SERVER=4.4
 #MONGO_SERVER=latest
+
+
+# Project directory in data/www
+FLASK_PROJECT=my-flask
+
+# Python version to choose
+#PYTHON_VERSION=2.7
+#PYTHON_VERSION=3.5
+#PYTHON_VERSION=3.6
+#PYTHON_VERSION=3.7
+PYTHON_VERSION=3.8
 
 
 
@@ -579,7 +589,7 @@ HTTPD_VHOST_SSL_TYPE=both
 ###
 ### When changing this value, restart the devilbox.
 ###
-HTTPD_DOCROOT_DIR=htdocs
+HTTPD_DOCROOT_DIR=public
 
 
 ###
@@ -635,7 +645,7 @@ HTTPD_NGINX_WORKER_CONNECTIONS=1024
 ### the MySQL root user password will not actually be changed and the Devilbox intranet
 ### won't be able to connect to the MySQL service.
 ###
-MYSQL_ROOT_PASSWORD=
+MYSQL_ROOT_PASSWORD=root
 
 
 ###
@@ -663,7 +673,7 @@ PGSQL_ROOT_USER=postgres
 ### If you want to set a password, ensure to remove 'trust' from
 ### PGSQL_HOST_AUTH_METHOD below
 ###
-PGSQL_ROOT_PASSWORD=
+PGSQL_ROOT_PASSWORD=root
 
 
 ###
